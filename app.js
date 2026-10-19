@@ -44,4 +44,12 @@ if(!prefersStill && 'IntersectionObserver' in window){
  heading.append(` ${fragment.textContent.trim()}`);fragment.remove();
 });
 
+const videoSection=document.querySelector('#video-tham-khao');
+if(videoSection){
+ const videoLink=videoSection.querySelector('.video-link');const footnote=videoSection.querySelector('.video-footnote');const frame=videoSection.querySelector('.phone-frame');
+ videoLink?.remove();
+ if(footnote)footnote.textContent='Video minh họa trong bài thuyết trình.';
+ if(frame){frame.replaceChildren();const video=document.createElement('video');video.src='video/Download.mp4';video.controls=true;video.preload='metadata';video.playsInline=true;video.setAttribute('aria-label','Video minh họa về tiêu dùng bền vững');frame.append(video);}
+}
+
 })();
