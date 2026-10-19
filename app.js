@@ -37,4 +37,11 @@ if(!prefersStill && 'IntersectionObserver' in window){
  window.addEventListener('resize',drift,{passive:true});drift();
 }
 
+// Chapter 5 headings include sentence endings that were split into standalone paragraphs.
+['topic-5-1','topic-5-2','topic-5-3','topic-5-4'].forEach(id=>{
+ const topic=document.getElementById(id);const heading=topic?.querySelector('h3');const fragment=topic?.querySelector('.topic-prose>p:first-child');
+ if(!heading||!fragment)return;
+ heading.append(` ${fragment.textContent.trim()}`);fragment.remove();
+});
+
 })();
