@@ -44,6 +44,20 @@ if(!prefersStill && 'IntersectionObserver' in window){
  heading.append(` ${fragment.textContent.trim()}`);fragment.remove();
 });
 
+[
+ ['topic-5-0','https://cdn.nbtv.vn/upload/news/6_2023/a_13501918062023.jpg','Chiến lược quốc gia về tăng trưởng xanh','image-right'],
+ ['topic-5-1','assets/visual_019.jpg','Mỹ phẩm thuần chay Cocoon','image-right'],
+ ['topic-5-3','assets/visual_021.jpg','Mô hình chợ giảm thiểu rác thải nhựa','image-right'],
+ ['topic-5-4','assets/visual_022.jpg','Hội thảo UNDP về trách nhiệm mở rộng của nhà sản xuất','image-left']
+].forEach(([id,src,alt,placement])=>{
+ const topic=document.getElementById(id);const prose=topic?.querySelector('.topic-prose');
+ if(!topic||!prose||topic.querySelector('.topic-feature'))return;
+ const feature=document.createElement('div');feature.className=`topic-feature ${placement}`;
+ const figure=document.createElement('figure');figure.className='visual';
+ figure.innerHTML=`<img src="${src}" alt="${alt}" loading="lazy"><figcaption>Hình minh họa từ tài liệu gốc</figcaption>`;
+ prose.replaceWith(feature);feature.append(prose,figure);topic.classList.add('has-visual');
+});
+
 const videoSection=document.querySelector('#video-tham-khao');
 if(videoSection){
  const videoLink=videoSection.querySelector('.video-link');const footnote=videoSection.querySelector('.video-footnote');const frame=videoSection.querySelector('.phone-frame');
